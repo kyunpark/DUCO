@@ -51,7 +51,9 @@ import org.apache.hadoop.hbase.util.Bytes;
 
 
 
-
+// There are two functions in the class: filter() and exportData(). filter() demonstrates how read .csv file and store
+// data into HBbase via classification and regular expressions are applied to classify the property of input data.
+// exportData() shows how data is exported from HBase to a .csv file.
 
 public class Classification{
 
