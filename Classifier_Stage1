@@ -1,0 +1,124 @@
+filename <- "sample.csv"
+dataMatrix <- read.csv(filename, header=TRUE, sep=',', stringsAsFactors=FALSE)
+
+#############################################################################################################
+#establish new blank dataframe to store classifled data
+#############################################################################################################
+mat=matrix(nrow = nrow(dataMatrix),ncol=0) 
+dataClassified = as.data.frame(mat) 
+
+#############################################################################################################
+#Classify raw data into number, character, and unknown format
+#############################################################################################################
+#numCharClassifier <- function(dataMatrix) {
+  numMatrix = matrix(nrow = nrow(dataMatrix),ncol = 0)
+  number = as.data.frame(numMatrix)
+  charMatrix = matrix(nrow = nrow(dataMatrix), ncol = 0)
+  character = as.data.frame(charMatrix)
+  unknownMatrix = matrix(nrow = nrow(dataMatrix),ncol = 0)
+  unknownFormat = as.data.frame(unknownMatrix)
+  for (i in 1:ncol(dataMatrix)) {
+    if (mode(dataMatrix[,i]) == "numeric"){
+      number <- cbind(number, dataMatrix[,i])
+    }else if (typeof(dataMatrix[,i]) == "character") {
+      character <- cbind(character, dataMatrix[,i])
+    }else{
+      unknownFormat <- cbind(unknownFormat, dataMatrix[,i])
+    }
+  }
+#  return (number)
+#  return (character)
+#  return (unknownFormat)
+#}
+
+#############################################################################################################
+#classify dates from character
+#############################################################################################################
+#to be continue
+
+#############################################################################################################
+#classify rates from number
+#############################################################################################################
+#to be continue
+
+#############################################################################################################
+#classify notional from number
+#############################################################################################################
+#to be continue
+
+#############################################################################################################
+#define the date format as day/month.year
+#############################################################################################################
+setDateFormat <- function(date){
+  dateInFormat <- strptime(date,format="%Y%m%d")
+  return(dateInFormat)
+}
+
+#############################################################################################################
+#define format of payment frequency as a 2 byte character
+#############################################################################################################
+setPfFormat <- function(paymentFrequency){
+  if (is.character(paymentFrequency) && nchar(paymentFrequency) = 2) {
+    pfInFormat <- paymentFrequency
+  }else if (is.character(paymentFrequency) && nchar(paymentFrequency) != 2){
+    pfInFormat <- substr(paymentFrequency,1,2)
+  }else {
+    as.characher(payementFrequency)
+    pfInFormat <- substr(payementFrequency,1,3)
+  }
+  return(pfInFormat)
+}
+
+#############################################################################################################
+#define format of notional as double
+#############################################################################################################
+setNotionalFormat <- function(notional){
+  if (is.double(notional)) {
+    notionalInFormat <- notional
+  }else {
+    notionalInFormat <- as.double(notional)
+  }
+  return(notionalInFormat)
+}
+
+#############################################################################################################
+#define format of Currency as a 3 byte character
+#############################################################################################################
+setCurrencyFormat <- function(currency){
+  if (is.character(currency) && nchar(currency) = 3) {
+    currencyInFormat <- currency
+  }else if (is.character(currency) && nchar(currency) != 3){
+    currencyInFormat <- substr(currency,1,3)
+  }else {
+    as.characher(currency)
+    currencyInFormat <- substr(currency,1,3)
+  }
+  return(currencyInFormat)
+}
+
+#############################################################################################################
+#define format of rate, accurate to 2 digit
+#############################################################################################################
+setRateFormat <- function(rate){
+  options(digit = 2)
+  if (is.double(rate)) {
+    rateInFormat <- rate
+  }else {
+    rateInFormat <- as.double(rate)
+  }
+  return (rateInformat)
+}
+
+#############################################################################################################
+#define format of price as double
+#############################################################################################################
+setPriceFormat <- function(price){
+  if (is.double(price)) {
+    priceInFormat <- price
+  }else
+    priceInFormat <- as.double(price)
+  }
+  return (priceInFormat)
+}
+
+write.csv(dataClassified, "D:/Dropbox/dataClassified.csv") 
