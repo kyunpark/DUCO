@@ -1,0 +1,16 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class WriteData2CsvTest {
+
+	@Test
+	public void testGenarateData2CSV_m() {
+		String outPutPath = "D:\\javaProgram\\HbaseClient\\data\\";
+		int m=50;//number of row to be generated
+		String filename =m+"rows";
+		
+		new WriteData2Csv().genarateData2CSV_m(outPutPath, filename, m);
+	}
+
+}
