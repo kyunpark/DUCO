@@ -1,9 +1,11 @@
 package generating;
 
+import java.util.Calendar;
 import java.util.Random;
 
-public class UnitOfTradingColumnGenerator {
-	public String generateColumnValue(){
+public class NotionalColumnGenerator implements ColumnGenerator{
+	public String generateColumnValue(Calendar[] benchTime, String[] tradeDate,
+			boolean[] tradeDateGenerateflag,boolean[] tradeIdExistence,int rowsNumber){
 		String fd = new String();
 		Random r = new Random();
 		int iii = (int) (((int) Math.round(r.nextInt() / 100000)) * Math
@@ -18,8 +20,9 @@ public class UnitOfTradingColumnGenerator {
 			fd = Stringinsert(fd, ",", fd.length() - 13);
 		return fd;
 	}
-
+	// 给字符串a的t位置处插入字符串b
 	private String Stringinsert(String a, String b, int t) {
 		return a.substring(0, t) + b + a.substring(t + 1, a.length());
 	}
+
 }

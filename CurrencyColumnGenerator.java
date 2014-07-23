@@ -1,9 +1,11 @@
 package generating;
 
+import java.util.Calendar;
 import java.util.Random;
 
-public class CurrencyColumnGenerator {
-	public String generateColumnValue(){
+public class CurrencyColumnGenerator implements ColumnGenerator{
+	public String generateColumnValue(Calendar[] benchTime, String[] tradeDate,
+			boolean[] tradeDateGenerateflag,boolean[] tradeIdExistence,int rowsNumber){
 		String fd = new String();
 		Random r = new Random();
 
@@ -20,5 +22,7 @@ public class CurrencyColumnGenerator {
 		}
 		return fd;
 	}
+
+
 
 }
