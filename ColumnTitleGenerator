@@ -4,23 +4,8 @@ import java.util.Random;
 
 public class ColumnTitleGenerator {
 	public void generateColumnValueArray(String typename,String [] titleArray,int [] titleOrder,int [] numberOfColumn) {
-		//String[] titleArray = new String[20];
 		Random random = new Random(); 
-/*		int remainder=random.nextInt()%3;
-		//String[] swapTitleArray = new String [];
-		switch(remainder)
-		{
-		case(0):
 
-			break;
-		case(1):
-
-			break;
-		case(2):
-			break;
-			
-		
-		}*/
 		String[] swapTitleArray = { "Trade ID", "Trade date", "Effective date",
 				"Termination date", "Payment frequency", "Notional",
 				"Currency", "Fixed rate", "Floating rate",
@@ -40,15 +25,15 @@ public class ColumnTitleGenerator {
 			for(int i=0;i<m;i++)
 				titleArray[i]=swapTitleArray[titleOrder[i]-1];
 			
-			// 随机列名
+
 			//Random random = new Random(); 
 			int numberOfRandomTitle=random.nextInt(m);
 			for(int i=0;i<numberOfRandomTitle;i++){
 				int randomOrder = random.nextInt(m);
-			    titleArray[randomOrder]=getRandomString(random.nextInt(6)+1);
+			    titleArray[randomOrder]=getRandomString(random.nextInt(4));
 			}
 			
-			// 随机去掉 某列 
+
 			randomRemoveColumn(1,titleArray,titleOrder,numberOfColumn);
 			randomRemoveColumn(12,titleArray,titleOrder,numberOfColumn);
 			
@@ -69,12 +54,12 @@ public class ColumnTitleGenerator {
 				titleArray[i]=futureTitleArray[titleOrder[i]-1];
 			for(int i=0;i<m;i++)
 				titleOrder[i]=temp[i]+12;
-			// 随机列名
+
 			//Random random = new Random(); 
 			int numberOfRandomTitle=random.nextInt(m);
 			for(int i=0;i<numberOfRandomTitle;i++){
 				int randomOrder = random.nextInt(m);
-			    titleArray[randomOrder]=getRandomString(random.nextInt(1));
+			    titleArray[randomOrder]=getRandomString(random.nextInt(4));
 			}
 			randomRemoveColumn(9+12,titleArray,titleOrder,numberOfColumn);
 		}
@@ -84,7 +69,7 @@ public class ColumnTitleGenerator {
 		 //System.out.println(titleArray);
 		
 	}
-	// 产生m个不重复数字
+
 	public  int[] generateNoRepeatArray(int m, int n) {
 		int[] v = new int[m];
 		boolean[] b = new boolean[n];
@@ -99,7 +84,7 @@ public class ColumnTitleGenerator {
 		} while (m > 0);
 		return v;
 	}
-	public  String getRandomString(int length) { //length表示生成字符串的长度
+	public  String getRandomString(int length) { 
 	    String base = "abcdefghijklmnopqrstuvwxyz";   
 	    Random random = new Random();   
 	    StringBuffer sb = new StringBuffer();   
@@ -110,7 +95,7 @@ public class ColumnTitleGenerator {
 	    return sb.toString();   
 	 }   
 	public void randomRemoveColumn(int col,String [] titleArray,int [] titleOrder,int [] numberOfColumn){
-		// 随机去掉 某列 
+
 		Random random = new Random(); 
 		int m = numberOfColumn[0];
 		int remainder=random.nextInt()%3;
