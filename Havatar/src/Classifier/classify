@@ -90,7 +90,38 @@ public class mainForm {
 			}
 		});
 	}
+public Classifier loadClassifier(File serializedFile)
+        throws FileNotFoundException, IOException, ClassNotFoundException {
 
+                                           
+        // Here we load a serialized classifier from a file.                                               
+
+        Classifier classifier;
+
+        ObjectInputStream ois =
+            new ObjectInputStream (new FileInputStream (serializedFile));
+        classifier = (Classifier) ois.readObject();
+        ois.close();
+
+        return classifier;
+    }
+    Dataset dataForClassification = FileHandler.loadDataset(new File("devtools/data/iris.data"), 4, ",");
+   /* Counters for correct and wrong predictions. */
+int correct = 0, wrong = 0;
+/* Classify all instances and check with the correct class values */
+for (Instance inst : dataForClassification) {
+    Object predictedClassValue = knn.classify(inst);
+    Object realClassValue = inst.classValue();
+    if (predictedClassValue.equals(realClassValue))
+        correct++;
+    else
+        wrong++;
+        
+        Dataset data = FileHandler.loadDataset(new File("devtools/data/iris.data"), 4, ",");
+ /* Contruct a KNN classifier that uses 5 neighbors to make a
+  *decision. */
+Classifier knn = new KNearestNeighbors(5);
+knn.buildClassifier(data);
 	/**
 	 * Create the application.
 	 */
@@ -176,7 +207,16 @@ public class mainForm {
 				    		  
 				    		  for(int i=0; i< strArray.length; i++)
 					    		    strArray[i].trim();
-				    		  
+				    		  private static String[] CATEGORIES
+    = { "soc.religion.christian",
+        "talk.religion.misc",
+        "alt.atheism",
+        "misc.forsale" };
+        Classification classification
+    = new Classification(CATEGORIES[i]);
+Classified<CharSequence> classified
+    = new Classified<CharSequence>(text,classification);
+classifier.handle(classified);
 				    		  
 				    		  
 				    		  ArrayList<String> dates = new ArrayList<String>();
