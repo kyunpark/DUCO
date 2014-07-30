@@ -1,4 +1,4 @@
-package Duco;
+package mainController;
 
 import java.io.IOException;
 

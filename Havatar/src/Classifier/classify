@@ -298,9 +298,6 @@
  +		btnStart.setBounds(59, 148, 161, 29);
  +		frame.getContentPane().add(btnStart);
  +		
- +		
- +		
- +		
  +
  +		JButton btnExport = new JButton("Export");
  +		btnExport.addActionListener(new ActionListener() {
