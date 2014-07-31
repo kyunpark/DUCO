@@ -2,5 +2,8 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/usr/local/Cellar/hbase/0.98.3/libexec/lib/hbase-client-0.98.3-hadoop2.jar"/>
+	<classpathentry kind="lib" path="/usr/local/Cellar/hbase/0.98.3/libexec/lib/hadoop-common-2.2.0.jar"/>
+	<classpathentry kind="lib" path="/usr/local/Cellar/hbase/0.98.3/libexec/lib/hbase-common-0.98.3-hadoop2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
